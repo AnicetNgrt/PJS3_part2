@@ -1,0 +1,24 @@
+{
+  "name": "pjs3_mission2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnicetNgrt/PJS3_part2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnicetNgrt/PJS3_part2/issues"
+  },
+  "homepage": "https://github.com/AnicetNgrt/PJS3_part2#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
