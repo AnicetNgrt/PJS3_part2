@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/AnicetNgrt/PJS3_part2#readme",
   "dependencies": {
+    "csv-parser": "^2.3.3",
     "ejs": "^3.1.5",
     "express": "^4.17.1"
   }
