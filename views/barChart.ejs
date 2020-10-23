@@ -1,0 +1,68 @@
+<div class="canvas-wrapper">
+    <canvas id="<%-id %>" width="600" height="250"></canvas>
+    <script>
+    var colors = [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+    ]
+
+    function pickColorsIndependant(count) {
+        let ret = [];
+        for(let i = 0; i < count; i++) {
+            ret.push(colors[i % colors.length]);
+        }
+        return ret;
+    }
+
+    function pickColorsPairs(count) {
+        let ret = [];
+        for(let i = 0; i < count; i++) {
+            ret.push(colors[i % 2]);
+        }
+        return ret;
+    }
+
+    var ctx = document.getElementById("<%-id %>").getContext('2d');
+    var name = "<%-chart.name %>";
+    var labels = <%-JSON.stringify(chart.labels) %>;
+    console.log(labels);
+    var datasets = <%- JSON.stringify(chart.datasets) %>;
+    var colors = pickColorsIndependant(Object.keys(datasets).length);
+    console.log(datasets);
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: Object.entries(datasets).map((pair, index) => {
+                console.log(pair);
+                return {
+                    label: pair[0],
+                    data: pair[1],
+                    backgroundColor: colors[index],
+                    borderWidth: 0
+                }
+            })
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            title: {
+                display: name != "noname",
+                text: name
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+</div>
